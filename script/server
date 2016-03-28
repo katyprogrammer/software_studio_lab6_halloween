@@ -1,0 +1,11 @@
+#!/bin/sh
+
+gem install bundler
+
+bundle install
+
+if [ "$1" = "production" ]; then
+  sudo PORT=80 bundle exec foreman start -f Procfile
+else
+  bundle exec foreman start -f Procfile
+fi
